@@ -15,11 +15,12 @@ class Header extends React.Component {
     };
   }
 
-  handleClick = () => {
+  handleClick = e => {
     this.setState({
       showOptions: !this.state.showOptions
     });
   };
+
   render() {
     const { showOptions } = this.state;
     return (
@@ -40,7 +41,7 @@ class Header extends React.Component {
         </div>
 
         <div className="toggle">
-          <Menu className="icon" onClick={this.handleClick} />
+          <Menu name="icon" className="icon" onClick={this.handleClick} />
 
           {showOptions ? (
             <div className="dropdown-menu">
