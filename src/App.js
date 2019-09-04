@@ -24,7 +24,6 @@ class App extends React.Component {
       this.setState({
         currentUser: user
       });
-      console.log(user);
     });
   }
 
@@ -33,9 +32,10 @@ class App extends React.Component {
   }
 
   render() {
+    const { currentUser } = this.state;
     return (
       <div>
-        <Header />
+        <Header currentUser={currentUser} />
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route path="/shop" component={ShopPage} />
