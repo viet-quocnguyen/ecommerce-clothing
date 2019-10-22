@@ -27,7 +27,6 @@ class Header extends React.Component {
   };
 
   render() {
-    const { showOptions } = this.state;
     const { currentUser } = this.props;
 
     return (
@@ -52,30 +51,6 @@ class Header extends React.Component {
               SIGN IN
             </Link>
           )}
-        </div>
-
-        <div className="toggle">
-          <Menu name="icon" className="icon" onClick={this.handleMenu} />
-
-          {showOptions ? (
-            <div className="dropdown-menu">
-              <Link className="option" to="/shop">
-                SHOP
-              </Link>
-              <Link className="option" to="/contact">
-                CONTACT
-              </Link>
-              {currentUser ? (
-                <div className="option logout" onClick={this.handleLogOut}>
-                  LOG OUT
-                </div>
-              ) : (
-                <Link className="option" to="/signin">
-                  SIGN IN
-                </Link>
-              )}
-            </div>
-          ) : null}
         </div>
       </div>
     );
