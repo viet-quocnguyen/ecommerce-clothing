@@ -4,7 +4,7 @@ import "./App.css";
 import HomePage from "./pages/hompage/homepage.component";
 import ShopPage from "./pages/shop/shop.component";
 import Header from "./components/header/header.component";
-import SignInSignUpPage from "./pages/sign-in-sign-up/sign-in-sign-u.component";
+import SignInSignUpPage from "./pages/sign-in-sign-up/sign-in-sign-up.component";
 
 import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
 
@@ -31,8 +31,12 @@ class App extends React.Component {
               id: snapShot.id,
               ...snapShot.data()
             }
+          }, () => {
+            console.log(this.state);
           })
         });
+
+
       } else {
         this.setState({
           currentUser: null
