@@ -6,7 +6,6 @@ import { auth, signInWithGoogle } from "../../firebase/firebase.utils";
 
 import "./sign-in.style.scss";
 
-
 class SignIn extends React.Component {
   constructor() {
     super();
@@ -25,19 +24,19 @@ class SignIn extends React.Component {
     });
   }
 
-  handleSubmit = async(e) => {
+  handleSubmit = async e => {
     e.preventDefault();
-    const {email, password} = this.state;
+    const { email, password } = this.state;
     try {
       await auth.signInWithEmailAndPassword(email, password);
       this.setState({
-        email: '',
-        password: ''
-      })
+        email: "",
+        password: ""
+      });
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 
   render() {
     const { email, password } = this.state;

@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import { ReactComponent as Logo } from "../../assets/crown.svg";
-import { ReactComponent as Menu } from "../../assets/bars-solid.svg";
 import { auth } from "../../firebase/firebase.utils";
 
 import "./header.style.scss";
@@ -11,16 +10,8 @@ class Header extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      showOptions: false
-    };
+    this.state = {};
   }
-
-  handleMenu = e => {
-    this.setState({
-      showOptions: !this.state.showOptions
-    });
-  };
 
   handleLogOut = () => {
     auth.signOut();
@@ -28,7 +19,6 @@ class Header extends React.Component {
 
   render() {
     const { currentUser } = this.props;
-
     return (
       <div className="header">
         <Link className="logo-container" to="/">
