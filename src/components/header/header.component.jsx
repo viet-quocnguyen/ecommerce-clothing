@@ -22,7 +22,7 @@ class Header extends React.Component {
   };
 
   render() {
-    const { currentUser } = this.props;
+    const { currentUser, isCartHidden } = this.props;
     return (
       <div className="header">
         <Link className="logo-container" to="/">
@@ -48,14 +48,15 @@ class Header extends React.Component {
 
           <CartIcon />
         </div>
-        <CartDropdown />
+        {isCartHidden ? null : <CartDropdown />}
       </div>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  currentUser: state.user.currentUser
+  currentUser: state.user.currentUser,
+  isCartHidden: state.cart.hidden
 });
 
 export default connect(mapStateToProps)(Header);
