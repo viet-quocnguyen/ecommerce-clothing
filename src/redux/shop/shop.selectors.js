@@ -10,6 +10,5 @@ export const selectCollections = createSelector(
 export const selectCollection = collectionName =>
   createSelector(
     [selectCollections],
-    collections =>
-      collections.find(collection => collection.routeName === collectionName)
+    collections => collections[collectionName]
   );

@@ -9,8 +9,8 @@ import "./collection-overview.style.scss";
 const CollectionOverview = ({ collections }) => {
   return (
     <div className="collection-overview">
-      {collections.map(({ id, ...otherProps }) => (
-        <CollectionPreview key={id} {...otherProps} />
+      {Object.keys(collections).map(key => (
+        <CollectionPreview key={collections[key].id} {...collections[key]} />
       ))}
     </div>
   );
