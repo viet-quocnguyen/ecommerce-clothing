@@ -12,7 +12,13 @@ import { auth } from "../../firebase/firebase.utils";
 import CartIcon from "../cart-icon/cart-icon.component";
 import CartDropdown from "../cart-dropdown/cart-dropdown.component";
 
-import "./header.style.scss";
+import {
+  HeaderContainer,
+  LogoContainer,
+  OptionsContainer,
+  OptionDiv,
+  OptionLink
+} from "./header.styles";
 
 class Header extends React.Component {
   constructor(props) {
@@ -28,22 +34,16 @@ class Header extends React.Component {
   render() {
     const { currentUser, isCartHidden } = this.props;
     return (
-      <div className="header">
-        <Link className="logo-container" to="/">
+      <HeaderContainer>
+        <LogoContainer to="/">
           <Logo className="logo" />
-        </Link>
-        <div className="options">
-          <Link className="option" to="/shop">
-            SHOP
-          </Link>
-          <Link className="option" to="/contact">
-            CONTACT
-          </Link>
+        </LogoContainer>
+        <OptionsContainer>
+          <OptionLink to="/shop">SHOP</OptionLink>
+          <OptionLink to="/contact">CONTACT</OptionLink>
 
           {currentUser ? (
-            <div className="option" onClick={this.handleLogOut}>
-              LOG OUT
-            </div>
+            <OptionDiv onClick={this.handleLogOut}>LOG OUT</OptionDiv>
           ) : (
             <Link className="option" to="/signin">
               SIGN IN
@@ -51,9 +51,9 @@ class Header extends React.Component {
           )}
 
           <CartIcon />
-        </div>
+        </OptionsContainer>
         {isCartHidden ? null : <CartDropdown />}
-      </div>
+      </HeaderContainer>
     );
   }
 }
