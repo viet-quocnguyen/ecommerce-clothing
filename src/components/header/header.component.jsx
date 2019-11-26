@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 import { connect } from "react-redux";
 
@@ -16,7 +15,6 @@ import {
   HeaderContainer,
   LogoContainer,
   OptionsContainer,
-  OptionDiv,
   OptionLink
 } from "./header.styles";
 
@@ -43,11 +41,11 @@ class Header extends React.Component {
           <OptionLink to="/contact">CONTACT</OptionLink>
 
           {currentUser ? (
-            <OptionDiv onClick={this.handleLogOut}>LOG OUT</OptionDiv>
+            <OptionLink as="div" onClick={this.handleLogOut}>
+              LOG OUT
+            </OptionLink>
           ) : (
-            <Link className="option" to="/signin">
-              SIGN IN
-            </Link>
+            <OptionLink to="/signin">SIGN IN</OptionLink>
           )}
 
           <CartIcon />

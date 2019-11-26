@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+
 import { Route, Switch, Redirect } from "react-router-dom";
 
 import { connect } from "react-redux";
@@ -16,11 +16,6 @@ import CheckoutPage from "./pages/checkout/checkout.component";
 
 import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
 import { setCurrentUser } from "./redux/user/user.actions";
-
-const textStyle = {
-  color: "red",
-  fontSize: "24px"
-};
 
 class App extends React.Component {
   unsubscribeFromAuth = null;
