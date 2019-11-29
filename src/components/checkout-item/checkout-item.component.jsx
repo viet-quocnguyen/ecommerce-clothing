@@ -7,30 +7,40 @@ import {
 } from "../../redux/cart/cart.actions";
 import { connect } from "react-redux";
 
-import "./checkout-item.styles.scss";
+import {
+  CheckoutItemContainer,
+  ImageContainer,
+  Image,
+  NameContainer,
+  PriceContainer,
+  QuantityContainer,
+  ValueContainer,
+  ArrowContainer,
+  RemoveButtonContainer
+} from "./checkout-item.styles";
 
 const CheckoutItem = ({ cartItem, clearItem, addItem, removeItem }) => {
   const { imageUrl, name, quantity, price } = cartItem;
   return (
-    <div className="checkout-item">
-      <div className="image-container">
-        <img src={imageUrl} alt="item" />
-      </div>
-      <span className="name">{name}</span>
-      <span className="quantity">
-        <div className="arrow" onClick={() => removeItem(cartItem)}>
+    <CheckoutItemContainer>
+      <ImageContainer>
+        <Image src={imageUrl} alt="item" />
+      </ImageContainer>
+      <NameContainer>{name}</NameContainer>
+      <QuantityContainer>
+        <ArrowContainer onClick={() => removeItem(cartItem)}>
           &#10094;
-        </div>
-        <div className="value">{quantity}</div>
-        <div className="arrow" onClick={() => addItem(cartItem)}>
+        </ArrowContainer>
+        <ValueContainer>{quantity}</ValueContainer>
+        <ArrowContainer onClick={() => addItem(cartItem)}>
           &#10095;
-        </div>
-      </span>
-      <span className="price">{price}</span>
-      <span className="remove-button" onClick={() => clearItem(cartItem)}>
+        </ArrowContainer>
+      </QuantityContainer>
+      <PriceContainer>{price}</PriceContainer>
+      <RemoveButtonContainer onClick={() => clearItem(cartItem)}>
         &#10005;
-      </span>
-    </div>
+      </RemoveButtonContainer>
+    </CheckoutItemContainer>
   );
 };
 
@@ -40,7 +50,4 @@ const mapDispatchToProps = dispatch => ({
   removeItem: item => dispatch(removeItemFromCart(item))
 });
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(CheckoutItem);
+export default connect(null, mapDispatchToProps)(CheckoutItem);
